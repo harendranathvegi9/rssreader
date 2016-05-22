@@ -3,12 +3,12 @@ using MvvmCross.Droid.Views;
 
 namespace Rssreader.Android.Views
 {
-    [Activity(Label = "Main")]
-    public class MainView : MvxActivity
+    [Activity(Label = "Feed")]
+    public class FeedView : MvxActivity
     {
         protected override void OnViewModelSet()
         {
-            SetContentView(Resource.Layout.View_Main);
+            SetContentView(Resource.Layout.View_Feed);
         }
     }
 }

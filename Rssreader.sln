@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssreader.Android", "src\Rs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssreader.Core", "src\Rssreader.Core\Rssreader.Core.csproj", "{14BF2E2D-B8A3-4C3B-A043-DEF32983E999}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssreader.Bussiness", "src\Rssreader.Bussiness\Rssreader.Bussiness.csproj", "{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rssreader.Common", "src\Rssreader.Common\Rssreader.Common.csproj", "{6AE3FEEF-7177-4C28-B60C-9A44CA7C31F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{14BF2E2D-B8A3-4C3B-A043-DEF32983E999}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14BF2E2D-B8A3-4C3B-A043-DEF32983E999}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14BF2E2D-B8A3-4C3B-A043-DEF32983E999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE3FEEF-7177-4C28-B60C-9A44CA7C31F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE3FEEF-7177-4C28-B60C-9A44CA7C31F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE3FEEF-7177-4C28-B60C-9A44CA7C31F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE3FEEF-7177-4C28-B60C-9A44CA7C31F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1EFE051F-77F2-4AF9-9BBA-703F72426252} = {D4DFA7AD-D397-4382-9CB9-7F710A8C08C7}
 		{14BF2E2D-B8A3-4C3B-A043-DEF32983E999} = {D4DFA7AD-D397-4382-9CB9-7F710A8C08C7}
+		{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0} = {D4DFA7AD-D397-4382-9CB9-7F710A8C08C7}
+		{6AE3FEEF-7177-4C28-B60C-9A44CA7C31F9} = {D4DFA7AD-D397-4382-9CB9-7F710A8C08C7}
 	EndGlobalSection
 EndGlobal

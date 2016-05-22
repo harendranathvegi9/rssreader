@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14BF2E2D-B8A3-4C3B-A043-DEF32983E999}</ProjectGuid>
+    <ProjectGuid>{328C4FF4-13BB-4CA7-9F9F-49D892B33FD0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rssreader.Core</RootNamespace>
-    <AssemblyName>Rssreader.Core</AssemblyName>
+    <RootNamespace>Rssreader.Bussiness</RootNamespace>
+    <AssemblyName>Rssreader.Bussiness</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,42 +34,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
-    <Compile Include="Parameters\ItemDetailsParameters.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\FeedViewModel.cs" />
-    <Compile Include="ViewModels\ItemDetailsViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.Binding.4.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.Core.4.1.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Localization, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.Binding.4.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Platform, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmCross.Platform.4.1.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rssreader.Bussiness\Rssreader.Bussiness.csproj">
-      <Project>{328c4ff4-13bb-4ca7-9f9f-49d892b33fd0}</Project>
-      <Name>Rssreader.Bussiness</Name>
-    </ProjectReference>
+    <!-- A reference to the entire .NET Framework is automatically included -->
     <ProjectReference Include="..\Rssreader.Common\Rssreader.Common.csproj">
       <Project>{6ae3feef-7177-4c28-b60c-9a44ca7c31f9}</Project>
       <Name>Rssreader.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Feed\FeedService.cs" />
+    <Compile Include="Feed\IFeedService.cs" />
+    <Compile Include="Models\Xml\Channel.cs" />
+    <Compile Include="Models\Xml\Item.cs" />
+    <Compile Include="Models\Xml\Rss.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebCaller\IWebCaller.cs" />
+    <Compile Include="WebCaller\WebCaller.cs" />
+    <Compile Include="Xml\IXmlReaderService.cs" />
+    <Compile Include="Xml\XmlReaderService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
