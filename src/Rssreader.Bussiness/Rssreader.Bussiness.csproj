@@ -41,6 +41,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\RssEncodingException.cs" />
+    <Compile Include="Exceptions\RssTimeoutException.cs" />
     <Compile Include="Feed\FeedService.cs" />
     <Compile Include="Feed\IFeedService.cs" />
     <Compile Include="Models\Xml\Channel.cs" />

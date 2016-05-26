@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
+using Rssreader.Bussiness.Exceptions;
 
 namespace Rssreader.Bussiness.WebCaller
 {
@@ -6,11 +8,21 @@ namespace Rssreader.Bussiness.WebCaller
     {
         public string GetString(string url)
         {
-            using (var client = new HttpClient())
-            using (var response = client.GetAsync(url).Result)
-            using (var content = response.Content)
+            using (var client = new HttpClient
             {
-                return content.ReadAsStringAsync().Result;
+                Timeout = TimeSpan.FromSeconds(10)
+            })
+            {
+                try
+                {
+                    var response = client.GetAsync(url).Result;
+                    var content = response.Content;
+                    return content.ReadAsStringAsync().Result;
+                }
+                catch
+                {
+                    throw new RssTimeoutException("TIMEOUT EXCEPTION");
+                }
             }
         }
     }

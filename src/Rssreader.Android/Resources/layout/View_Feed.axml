@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+              xmlns:local="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+  <TextView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <Mvx.MvxListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        local:MvxItemTemplate="@layout/listitem_items"
-        local:MvxBind="ItemsSource Items;ItemClick OpenItemDetailsView" />
+    android:layout_height="wrap_content"
+    local:MvxBind="Text ExceptionTitle"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:padding="20dp" />
+  <EditText
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    local:MvxBind="Text Link"
+    android:inputType="text" />
+  <Button
+    local:MvxBind="Click RefreshFeedCommand"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Refresh" />
+  <Mvx.MvxListView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    local:MvxItemTemplate="@layout/listitem_items"
+    local:MvxBind="ItemsSource Items;ItemClick OpenItemDetailsView" />
 </LinearLayout>

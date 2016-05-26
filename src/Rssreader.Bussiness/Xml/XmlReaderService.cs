@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
+using System.Xml.Serialization;
+using Rssreader.Bussiness.Exceptions;
 using Rssreader.Bussiness.Models.Xml;
 
 namespace Rssreader.Bussiness.Xml
@@ -13,6 +17,13 @@ namespace Rssreader.Bussiness.Xml
             if (String.IsNullOrEmpty(xml))
             {
                 return new Rss();
+            }
+
+            bool isUtf8 = CheckXmlEncoding(xml);
+
+            if (!isUtf8)
+            {
+                throw new RssEncodingException("NO UTF-8");
             }
 
             Channel channel = GetChannel(xml);
@@ -45,6 +56,11 @@ namespace Rssreader.Bussiness.Xml
                 Link = x.Element("link")?.Value,
                 PubDate = Convert.ToDateTime(x.Element("pubDate")?.Value)
             });
+        }
+
+        private bool CheckXmlEncoding(string xml)
+        {
+            return xml.Contains("encoding=\"UTF-8\"");
         }
     }
 }

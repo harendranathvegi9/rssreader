@@ -1,6 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using MvvmCross.Core.ViewModels;
+using Rssreader.Bussiness.Exceptions;
 using Rssreader.Bussiness.Feed;
 using Rssreader.Bussiness.Models.Xml;
 using Rssreader.Common;
@@ -11,10 +13,13 @@ namespace Rssreader.Core.ViewModels
     public class FeedViewModel : MvxViewModel
     {
         private ObservableCollection<Item> _items;
+        private string _link;
+        private readonly IFeedService _feedService;
 
         public FeedViewModel(IFeedService feedService)
         {
-            Items = new ObservableCollection<Item>(feedService.GetFeed(Constant.BaseRssFeedUrl).Channel.Items);
+            _feedService = feedService;
+            RefreshFeed(Constant.BaseRssFeedUrl);
         }
 
         public ObservableCollection<Item> Items
@@ -30,6 +35,19 @@ namespace Rssreader.Core.ViewModels
             }
         }
 
+        public string Link
+        {
+            get
+            {
+                return _link;
+            }
+            set
+            {
+                _link = value;
+                RaisePropertyChanged(() => Link);
+            }
+        }
+
         public ICommand OpenItemDetailsView => new MvxCommand<Item>(item =>
         {
             ShowViewModel<ItemDetailsViewModel>(new ItemDetailsParameters
@@ -39,5 +57,34 @@ namespace Rssreader.Core.ViewModels
                 Link = item.Link
             });
         });
+
+        public ICommand RefreshFeedCommand => new MvxCommand(() => RefreshFeed(Link));
+
+        private void RefreshFeed(string feedUrl)
+        {
+            try
+            {
+                Items = new ObservableCollection<Item>(_feedService.GetFeed(feedUrl).Channel.Items);
+            }
+            catch (RssTimeoutException exception)
+            {
+                ExceptionTitle = exception.Message;
+            }
+            catch (RssEncodingException exception)
+            {
+                ExceptionTitle = exception.Message;
+            }
+        }
+
+        private string _exceptionTitle;
+        public string ExceptionTitle
+        {
+            get { return _exceptionTitle; }
+            set
+            {
+                _exceptionTitle = value;
+                RaisePropertyChanged(() => ExceptionTitle);
+            }
+        }
     }
 }
