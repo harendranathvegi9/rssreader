@@ -15,11 +15,13 @@ namespace Rssreader.Core.ViewModels
         private ObservableCollection<Item> _items;
         private string _link;
         private readonly IFeedService _feedService;
+        private string _exceptionTitle;
 
         public FeedViewModel(IFeedService feedService)
         {
             _feedService = feedService;
             RefreshFeed(Constant.BaseRssFeedUrl);
+            Link = Constant.BaseRssFeedUrl;
         }
 
         public ObservableCollection<Item> Items
@@ -48,6 +50,16 @@ namespace Rssreader.Core.ViewModels
             }
         }
 
+        public string ExceptionTitle
+        {
+            get { return _exceptionTitle; }
+            set
+            {
+                _exceptionTitle = value;
+                RaisePropertyChanged(() => ExceptionTitle);
+            }
+        }
+
         public ICommand OpenItemDetailsView => new MvxCommand<Item>(item =>
         {
             ShowViewModel<ItemDetailsViewModel>(new ItemDetailsParameters
@@ -73,17 +85,6 @@ namespace Rssreader.Core.ViewModels
             catch (RssEncodingException exception)
             {
                 ExceptionTitle = exception.Message;
-            }
-        }
-
-        private string _exceptionTitle;
-        public string ExceptionTitle
-        {
-            get { return _exceptionTitle; }
-            set
-            {
-                _exceptionTitle = value;
-                RaisePropertyChanged(() => ExceptionTitle);
             }
         }
     }

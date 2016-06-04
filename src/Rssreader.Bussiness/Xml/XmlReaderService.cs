@@ -23,7 +23,7 @@ namespace Rssreader.Bussiness.Xml
 
             if (!isUtf8)
             {
-                throw new RssEncodingException("NO UTF-8");
+                throw new RssEncodingException("NO UTF-8 EXCEPTION");
             }
 
             Channel channel = GetChannel(xml);
